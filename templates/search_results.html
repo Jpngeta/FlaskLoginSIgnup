@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .contact-card {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .contact-field {
+            margin-bottom: 10px;
+        }
+        .field-label {
+            font-weight: bold;
+            display: inline-block;
+            width: 120px;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #666;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Information</h1>
+    
+    {% if contact %}
+        <div class="contact-card">
+            <div class="contact-field">
+                <span class="field-label">Name:</span>
+                <span>{{ contact.username }}</span>
+            </div>
+            
+            <div class="contact-field">
+                <span class="field-label">Email:</span>
+                <span>{{ contact.email }}</span>
+            </div>
+            
+            {% if contact.phone_number %}
+                <div class="contact-field">
+                    <span class="field-label">Phone Number:</span>
+                    <span>{{ contact.phone_number }}</span>
+                </div>
+            {% endif %}
+            
+            {% if contact.address %}
+                <div class="contact-field">
+                    <span class="field-label">Address:</span>
+                    <span>{{ contact.address }}</span>
+                </div>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>No contacts found with the specified registration number.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('search_contacts') }}" class="btn">Search Again</a>
+    
+    {% if session.user_id %}
+        <a href="{{ url_for('logout') }}" class="back-link">Logout</a>
+    {% else %}
+        <a href="{{ url_for('login') }}" class="back-link">← Back to Login</a>
+    {% endif %}
+</body>
+</html>

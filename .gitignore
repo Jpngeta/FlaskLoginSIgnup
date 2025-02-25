@@ -1,0 +1,39 @@
+# created by virtualenv automatically
+# Ignore virtual environment
+venv/
+env/
+.venv/
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+
+
+# Ignore environment variables
+.env
+.env.local
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore Flask debug logs
+*.log
+
+# Ignore local database files (if any)
+*.db
+*.sqlite3
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore coverage reports
+.coverage
+htmlcov/
+
+# Ignore distribution folders
+dist/
+build/
+*.egg-info/
